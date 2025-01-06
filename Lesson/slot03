@@ -16,6 +16,13 @@ import scipy.stats as stats
 
 stats.ttest_1samp(dfKhoiC['M1'], popmean=4.0)
 
+# Bài tập: Sinh viên kiểm tra xem điểm trung bình của môn thi M2 của khối thi C có bằng 5.7 hay không
+
+# Bài tập: Sinh viên về tự tìm hiểu cách thiết lập mức tin cậy hoặc sai lầm
+# Bài tập: Hãy kiểm tra xem có phải điểm trung bình M3
+# của thí sinh thi khối C có là 6.5 hay không
+# với mức sai lầm là 10%
+
 dfKhoiC = df.loc[df['KT'] == 'C']
 stats.ttest_ind(dfKhoiC['M1'], dfKhoiC['M2'], equal_var=True)
 
