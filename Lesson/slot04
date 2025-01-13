@@ -13,17 +13,21 @@ df['bin1'].value_counts()
 df['bin2'] = pd.qcut(df['Math'], q=[0, .2, .4, .6, .8, 1])
 df
 
+# Sinh viên tự hiển thị số lượng phần tử trong từng bin2
+
 df['bin3'] = pd.qcut(df['Math'],
                            q=[0, .2, .4, .6, .8, 1],
                            labels=['A', 'B', 'C', 'D', 'E'])
 df
+
+# Sinh viên tự hiển thị số lượng phần tử trong từng bin3
 
 df['bin4'] = pd.cut(df['Eng'],
                       bins=[0, 5, 8, float('Inf')],
                       labels=['Bad', 'OK', 'Good'])
 df
 
-df['bin4'].value_counts()
+# Sinh viên tự hiển thị số lượng phần tử trong từng bin4
 
 ---------------------------------------
 
@@ -54,6 +58,8 @@ from sklearn.preprocessing import OneHotEncoder
 y = OneHotEncoder().fit_transform(df[['Countries']]).toarray()
 print(y)
 
+# Bài tập: Khi nào dùng One Hot Encoding, Khi nào dùng label encoding
+
 ---------------------------------------
 import pandas as pd
 
@@ -71,6 +77,8 @@ max_la = df['LA'].abs().max()
 df['macLA'] = df['LA'] / max_la
 
 df
+
+# Sinh viên tự gõ lệnh biểu diễn max absolute của HCM
 
 from sklearn.preprocessing import MaxAbsScaler
 scaler = MaxAbsScaler()
@@ -91,6 +99,8 @@ df['mmcLA'] = (df['LA'] - min_la) / (max_la - min_la)
 
 df
 
+# Sinh viên tự làm min-max scale cho HCM
+
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
@@ -99,6 +109,8 @@ scaled_df = pd.DataFrame(scaled, columns=df[['HCM','LA']].columns)
 
 print(scaled_df)
 
+#Bài tập: Giả sử ta có lương của HCM và LA lần lượt là 10.0 và 4.5 thì qua scaler bằng bao nhiêu?
+#Bài tập: Giả sử có giá trị lần lượt là 0.8 và 1.8 hãy cho biết trước khi biến đổi scaler thì giá trị là bao nhiêu
 -----------------------------
 
 mean_la = df['LA'].mean()
@@ -106,6 +118,8 @@ std_la = df['LA'].std()
 df['zLA'] = (df['LA'] - mean_la) / std_la
 
 df
+
+# Sinh viên tự tính z-score cho HCM
 
 from sklearn.preprocessing import StandardScaler
 
@@ -116,6 +130,8 @@ scaled_df = pd.DataFrame(scaled, columns=df[['HCM','LA']].columns)
 
 print(scaled_df)
 
+# Hãy dùng Z-Score để đưa ra kết luận: Nếu một người có thu nhập 15 triệu ở HCM, một người ở LA có thu nhập 12 triệu thì người nào sinh hoạt thoải mái hơn
+
 -------------------------------
 def funcX(x):
     return x*x + 1
@@ -123,3 +139,11 @@ def funcX(x):
 df['TransformX'] = funcX(df[["LA"]])
 
 df
+
+# Bài tập
+# Sinh viên vẽ biểu đồ phân phối lương trung bình của HCM
+# Tính skenewss và kurtorsis của lương trung bình HCM
+# Sử dụng hàm log để transform dữ liệu lương ở HCM
+# Vẽ biểu đồ phân phối của dữ liệu lương trung bình của HCM sau khi transform
+# Tính skenewss và kurtorsis của dữ liệu lương trung bình HCM sau khi transform
+# Hãy so sánh độ nghiêng, độ nhọn phân phối sau khi transform so với dữ liệu ban đầu 
